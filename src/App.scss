@@ -1,0 +1,51 @@
+.App {
+  text-align: center;
+}
+
+.dice {
+  background-color: hotpink;
+  border: none;
+  padding: 15px;
+  margin-right: 2px;
+  text-align: left;
+
+  &:hover,
+  &:active,
+  &:focus {
+    // border-bottom: $sprk-toggle-trigger-hover-border-bottom;
+    // color: $sprk-toggle-trigger-hover-color;
+  }
+}
+
+.dice-picker .dice {
+  padding: 5px;
+}
+
+.d4 {
+  // background-color: #65D0D9;
+  fill:#65D0D9;
+}
+
+.d6 {
+  background-color: #21469F;
+}
+
+.d8 {
+  background-color: #648452;
+}
+
+.d10 {
+  background-color: #DCBF5E;
+}
+
+.d12 {
+  background-color: #DB7277;
+}
+
+.d20 {
+  background-color: #5A3128;
+}
+
+.roll-collection {
+  background-color: skyblue;
+}

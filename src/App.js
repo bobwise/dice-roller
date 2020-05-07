@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './App.css';
+import './App.scss';
 import DicePicker from './components/DicePicker/DicePicker';
 import Dice from './components/Dice/Dice';
+import Triangle from "./components/Icons/Triangle";
 
 function App() {
 
@@ -54,6 +55,7 @@ function App() {
 
   return (
     <div className="App">
+      <Triangle className='d4'/>
       <div className="roll-collection">
         {rolledDice.map((dice) =>
           <Dice
@@ -62,6 +64,7 @@ function App() {
             onClick={() => { removeDice(dice.id) }}
             key={dice.id}
           >
+            <Triangle/>
           </Dice>
         )}
         <div className='roll-total'>Total: {total}</div>
