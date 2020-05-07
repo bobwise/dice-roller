@@ -2,21 +2,17 @@
   text-align: center;
 }
 
-/* .d4 {
-  display: inline-block;
+.dice {
+  background-color: hotpink;
   border: none;
-  padding: 1rem 2rem;
-  margin: 0;
-  text-decoration: none;
-  background: #fff;
-  background-image: url("assets/d4_blank.png");
-  color: #ffffff;
-  font-family: sans-serif;
-  font-size: 1rem;
-  line-height: 1;
-  cursor: pointer;
-  text-align: center;
-  transition: background 250ms ease-in-out, transform 150ms ease;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-} */
+  padding: 5px;
+  margin-right: 2px;
+  text-align: left;
+
+  &:hover,
+  &:active,
+  &:focus {
+    border-bottom: $sprk-toggle-trigger-hover-border-bottom;
+    color: $sprk-toggle-trigger-hover-color;
+  }
+}

@@ -1,22 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import DicePicker from './components/DicePicker/DicePicker';
 import Dice from './components/Dice/Dice';
 
 function App() {
+
+  const [rolledDice, setRolledDice] = useState([]);
+  const [total, setTotal] = useState(0);
+
+  function addNewDice(dice) {
+    // roll it
+    dice.value = rollDice(dice.maxValue);
+    // add it to the state
+    setRolledDice(rolledDice.concat(dice));
+    // update the total
+    setTotal(total + dice.value);
+  }
+
+  function removeDice(id) {
+    // console.log('deleting dice with id: ' + id);
+
+    var removeIndex = rolledDice.map(
+      (dice) => { return dice.id }).indexOf(id);
+
+    setTotal(total - rolledDice[removeIndex].value);
+
+    setRolledDice(rolledDice.filter(item => item.id !== id));
+  }
+
+  function rerollAll() {
+    var newTotal = 0;
+    var newRolledDice = rolledDice.map((dice) => {
+      const newDice = {
+        id: dice.id,
+        maxValue: dice.maxValue,
+        value: rollDice(dice.maxValue)
+      }
+
+      newTotal += newDice.value;
+
+      return newDice;
+    })
+
+    setRolledDice(newRolledDice);
+    setTotal(newTotal);
+  }
+
+  function rollDice(maxValue) {
+    const value = Math.floor(Math.random() * maxValue) + 1;
+    // console.log('rolled a ' + value + ' on a d' + maxValue);
+    return value;
+  }
+
   return (
     <div className="App">
       <div className="roll-collection">
-        <Dice diceType='d4' diceValue='4' onClick={() => { console.log('delete dice') }}></Dice>
-        <Dice diceType='d6' diceValue='6' onClick={() => { console.log('delete dice') }}></Dice>
-        <Dice diceType='d8' diceValue='8' onClick={() => { console.log('delete dice') }}></Dice>
-        <Dice diceType='d10' diceValue='10' onClick={() => { console.log('delete dice') }}></Dice>
-        <Dice diceType='d12' diceValue='12' onClick={() => { console.log('delete dice') }}></Dice>
-        <Dice diceType='d20' diceValue='20' onClick={() => { console.log('delete dice') }}></Dice>
-        <div className='roll-total'>Total: X</div>
+        {rolledDice.map((dice) =>
+          <Dice
+            maxValue={dice.maxValue}
+            diceValue={dice.value}
+            onClick={() => { removeDice(dice.id) }}
+            key={dice.id}
+          >
+          </Dice>
+        )}
+        <div className='roll-total'>Total: {total}</div>
       </div>
-      <DicePicker></DicePicker>
-      <button>Roll</button>
+      <DicePicker addDiceCallback={addNewDice}></DicePicker>
+      <button onClick={rerollAll}>Roll</button>
     </div>
   );
 }
