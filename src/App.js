@@ -27,6 +27,8 @@ function App() {
     setTotal(total - rolledDice[removeIndex].value);
 
     setRolledDice(rolledDice.filter(item => item.id !== id));
+
+    // todo put focus on the next item in the tab order
   }
 
   function rerollAll() {
@@ -55,7 +57,7 @@ function App() {
 
   return (
     <div className="App">
-      <Triangle className='d4'/>
+      {/* <Triangle className='d4'/> */}
       <div className="roll-collection">
         {rolledDice.map((dice) =>
           <Dice
@@ -64,11 +66,11 @@ function App() {
             onClick={() => { removeDice(dice.id) }}
             key={dice.id}
           >
-            <Triangle/>
+            {/* <Triangle/> */}
           </Dice>
         )}
-        <div className='roll-total'>Total: {total}</div>
       </div>
+      <div className='roll-total'>Total: {total}</div>
       <DicePicker addDiceCallback={addNewDice}></DicePicker>
       <button onClick={rerollAll}>Roll</button>
     </div>

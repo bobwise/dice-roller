@@ -9,6 +9,11 @@
   margin-right: 2px;
   text-align: left;
 
+  color: white;
+  font-size: 1.25rem;
+
+  background-image: url(/src/assets/d4.svg);
+
   &:hover,
   &:active,
   &:focus {
@@ -47,5 +52,6 @@
 }
 
 .roll-collection {
+  min-height: 150px;
   background-color: skyblue;
 }
