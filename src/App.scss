@@ -3,7 +3,6 @@
 }
 
 .dice {
-  background-color: hotpink;
   border: none;
   padding: 15px;
   margin-right: 2px;
@@ -22,36 +21,73 @@
   }
 }
 
-.dice-picker .dice {
-  padding: 5px;
+.dice-picker {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+
+  background-color: green;
 }
 
-.d4 {
+.dice {
+  background-color: transparent;
+  padding: 5px;
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  position: relative;
+
+  .dice-label,
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+  }
+}
+
+.dice-picker .dice {
+  margin: 5px;
+  border: 2px solid hotpink;
+}
+
+.dice-picker .d4 .dice-label {
+  margin-top: .25rem;
+}
+
+.d4, .d10, .d8 {
+  color: black;
   // background-color: #65D0D9;
-  fill:#65D0D9;
+  // fill:#65D0D9;
 }
 
 .d6 {
-  background-color: #21469F;
+  // background-color: #21469f;
 }
 
 .d8 {
-  background-color: #648452;
+  // background-color: #648452;
 }
 
 .d10 {
-  background-color: #DCBF5E;
+  // background-color: #dcbf5e;
 }
 
 .d12 {
-  background-color: #DB7277;
+  // background-color: #db7277;
 }
 
 .d20 {
-  background-color: #5A3128;
+  // background-color: #5a3128;
 }
 
 .roll-collection {
   min-height: 150px;
   background-color: skyblue;
+}
+
+.roll-collection .dice {
+  margin: 5px;
 }

@@ -66,7 +66,6 @@ function App() {
             onClick={() => { removeDice(dice.id) }}
             key={dice.id}
           >
-            {/* <Triangle/> */}
           </Dice>
         )}
       </div>

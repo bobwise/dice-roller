@@ -1,5 +1,11 @@
 import React from 'react';
 import './Dice.css';
+import Triangle from "../Icons/Triangle";
+import Hexagon from "../Icons/Hexagon";
+import Diamond from "../Icons/Diamond";
+import Pentagon from "../Icons/Pentagon";
+import Nonagon from "../Icons/Nonagon";
+import Square from "../Icons/Square";
 var classNames = require('classnames');
 
 function Dice(props) {
@@ -16,8 +22,16 @@ function Dice(props) {
       })}
       onClick={() => {props.onClick()}}
     >
+      { props.maxValue === 4 && <Triangle/> }
+      { props.maxValue === 6 && <Square/> }
+      { props.maxValue === 8 && <Diamond/> }
+      { props.maxValue === 10 && <Pentagon/> }
+      { props.maxValue === 12 && <Nonagon/> }
+      { props.maxValue === 20 && <Hexagon/> }
       {props.children}
-      {props.diceValue}
+      <span class='dice-label'>
+        {props.diceValue}
+      </span>
     </button>
   );
 }
