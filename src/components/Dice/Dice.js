@@ -11,6 +11,7 @@ var classNames = require('classnames');
 function Dice(props) {
   return (
     <button
+      aria-label={props.ariaLabel ? props.ariaLabel : props.diceValue + " rolled on a d" + props.maxValue + ". Click to remove."}
       className={classNames({
         'dice': true,
         'd4': props.maxValue === 4,

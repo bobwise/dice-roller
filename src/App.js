@@ -8,6 +8,7 @@ function App() {
 
   const [rolledDice, setRolledDice] = useState([]);
   const [total, setTotal] = useState(0);
+  const [totalMessage, setTotalMessage] = useState("");
 
   function addNewDice(dice) {
     // roll it
@@ -15,7 +16,10 @@ function App() {
     // add it to the state
     setRolledDice(rolledDice.concat(dice));
     // update the total
-    setTotal(total + dice.value);
+    const newTotal = total + dice.value;
+    setTotal(newTotal);
+    setTotalMessage("Rolled a " + dice.value + ". New total is " + newTotal);
+    setTotalMessage("");
   }
 
   function removeDice(id) {
@@ -24,7 +28,11 @@ function App() {
     var removeIndex = rolledDice.map(
       (dice) => { return dice.id }).indexOf(id);
 
-    setTotal(total - rolledDice[removeIndex].value);
+    const newTotal = total - rolledDice[removeIndex].value;
+
+    setTotal(newTotal);
+    setTotalMessage("Removed a d " + rolledDice[removeIndex].maxValue + ". New total is " + newTotal);
+    setTotalMessage("");
 
     setRolledDice(rolledDice.filter(item => item.id !== id));
 
@@ -47,6 +55,15 @@ function App() {
 
     setRolledDice(newRolledDice);
     setTotal(newTotal);
+    setTotalMessage("Total is " + newTotal);
+    setTotalMessage("");
+  }
+
+  function clear() {
+    setRolledDice([]);
+    setTotal(0);
+    setTotalMessage("Total is 0");
+    setTotalMessage("");
   }
 
   function rollDice(maxValue) {
@@ -57,7 +74,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Triangle className='d4'/> */}
+      <h1 aria-label="Dice">di.ce</h1>
+      <DicePicker addDiceCallback={addNewDice}></DicePicker>
       <div className="roll-collection">
         {rolledDice.map((dice) =>
           <Dice
@@ -69,9 +87,12 @@ function App() {
           </Dice>
         )}
       </div>
-      <div className='roll-total'>Total: {total}</div>
-      <DicePicker addDiceCallback={addNewDice}></DicePicker>
-      <button onClick={rerollAll}>Roll</button>
+      <div className='roll-total'>
+        <span id="live-total" aria-live="polite" class="screen-reader-text">{totalMessage}</span>
+        <span aria-hidden="true">Total: {total}</span>
+      </div>
+      <button class="action-button" onClick={rerollAll}>Roll</button>
+      <button class="action-button action-button--secondary" onClick={clear}>Clear</button>
     </div>
   );
 }
