@@ -6,14 +6,16 @@ import Dice from "../Dice/Dice";
 function DicePicker(props) {
   return (
     <div className="dice-picker">
-      {[4,6,8,10,12,20].map((diceSize) => {
+      {[4, 6, 8, 10, 12, 20].map((diceSize) => {
         return (
-          <Dice 
-            maxValue={diceSize} 
-            diceValue={diceSize} 
-            onClick={() => { props.addDiceCallback({ maxValue: diceSize, id: uniqueId() }) }} 
-            ariaLabel={"Roll a d" + diceSize}
-          />
+          <div className="dice-picker__dice_container">
+            <Dice
+              maxValue={diceSize}
+              diceValue={diceSize}
+              onClick={() => { props.addDiceCallback({ maxValue: diceSize, id: uniqueId() }) }}
+              ariaLabel={"Roll a d" + diceSize}
+            />
+          </div>
         )
       })}
     </div>

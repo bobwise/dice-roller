@@ -1,3 +1,18 @@
+$dice-border-darken-factor: 25;
+
+$dice-teal: #65d0d9;
+$dice-teal-dark: darken($dice-teal, $dice-border-darken-factor);
+$dice-blue: #21469f;
+$dice-blue-dark: darken($dice-blue, $dice-border-darken-factor);
+$dice-green: #648452;
+$dice-green-dark: darken($dice-green, $dice-border-darken-factor);
+$dice-yellow: #dcbf5e;
+$dice-yellow-dark: darken($dice-yellow, $dice-border-darken-factor);
+$dice-brown: #5a3128;
+$dice-brown-dark: darken($dice-brown, $dice-border-darken-factor);
+$dice-red: #db7277;
+$dice-red-dark: darken($dice-red, $dice-border-darken-factor);
+
 body {
   // font-family: "modesto-text", serif;
 }
@@ -11,20 +26,20 @@ body {
 
 .roll-collection {
   height: 15rem;
-  background-color: #EEE;
+  background-color: #eee;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   // align-items: stretch;
   align-content: center;
-  // overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .roll-total {
-  background-color:#EEE;
+  background-color: #eee;
   text-align: right;
-  padding: .5rem;
+  padding: 0.5rem;
 }
 
 .dice {
@@ -40,10 +55,14 @@ body {
 .roll-collection .dice {
   margin: 5px;
   flex: 1 1 2rem;
-  
+
   font-size: 1.25rem;
-  max-width: 5rem;
   min-width: 2rem;
+  min-height: 2rem;
+
+  max-width: 5rem;
+  max-height: 5rem;
+
   // flex-grow: 1;
   // flex-shrink: 1;
   // flex-basis: 1;
@@ -55,13 +74,34 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   flex-shrink: 1;
+  min-height: 3.5rem;
+
+  .dice-picker__dice_container {
+    min-width: 3.5rem;
+    min-height: 3.5rem;
+  }
+
+  .dice {
+    transition: .2s;
+    margin: 5px;
+    height: 2.5rem;
+    width: 2.5rem;
+    font-size: 0.8rem;
+    &:focus {
+      height: 2.75rem;
+      width: 2.75rem;
+      font-size: 1.2rem;
+      outline: 2px solid black;
+      border-radius: 2rem;
+    }
+  }
 }
+
+$dice-border-width: 2px;
 
 .dice {
   background-color: transparent;
   padding: 5px;
-  max-width: 10rem;
-  max-height: 10rem;
   text-align: center;
   position: relative;
 
@@ -72,40 +112,62 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0 auto;
+
+    stroke-width: $dice-border-width;
   }
 }
 
-.dice-picker .dice {
-  margin: 5px;
-  height: 2.5rem;
-  width: 2.5rem;
-  font-size: .8rem;
-}
-
 .d4 .dice-label {
-  margin-top: .25rem;
+  margin-top: 0.25rem;
 }
 .d10 .dice-label {
-  margin-top: .1rem;
+  margin-top: 0.1rem;
 }
 
-.d4, .d10 {
+.d4 {
   color: black;
-  // background-color: #65D0D9;
-  // fill:#65D0D9;
+  fill: $dice-teal;
+  stroke: $dice-teal-dark;
+}
+
+.d6 {
+  fill: $dice-blue;
+  stroke: $dice-blue-dark;
+}
+
+.d8 {
+  fill: $dice-green;
+  stroke: $dice-green-dark;
+}
+
+.d10 {
+  color: black;
+  fill: $dice-yellow;
+  stroke: $dice-yellow-dark;
+}
+
+.d12 {
+  // color: black;
+  fill: $dice-red;
+  stroke: $dice-red-dark;
+}
+
+.d20 {
+  fill: $dice-brown;
+  stroke: $dice-brown-dark;
 }
 
 h1 {
   text-align: left;
-  margin-bottom: .2rem;;
+  margin-bottom: 0.2rem;
 }
 
 .action-button {
   background-color: #648452;
   color: #fff;
   border: 2px solid darken(#648452, 10);
-  margin: .5rem;
-  padding: .5rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   min-width: 5rem;
 }
 
