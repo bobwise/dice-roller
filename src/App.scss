@@ -13,8 +13,19 @@ $dice-brown-dark: darken($dice-brown, $dice-border-darken-factor);
 $dice-red: #db7277;
 $dice-red-dark: darken($dice-red, $dice-border-darken-factor);
 
+$gray-lighter: #D2D2D2;
+$gray-light: #7D7D7D;
+$gray: #3F3F45;
+$gray-dark: #2A2A2B;
+$gray-darker: #212121;
+
 body {
   // font-family: "modesto-text", serif;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $gray-darker;
+    color: $gray-lighter;
+  }
 }
 
 .App {
@@ -34,12 +45,22 @@ body {
   // align-items: stretch;
   align-content: center;
   overflow-y: auto;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $gray;
+    color: $gray-lighter;
+  }
 }
 
 .roll-total {
   background-color: #eee;
   text-align: right;
   padding: 0.5rem;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $gray;
+    color: $gray-lighter;
+  }
 }
 
 .dice {
@@ -75,6 +96,12 @@ body {
   justify-content: center;
   flex-shrink: 1;
   min-height: 3.5rem;
+  padding: 5px;
+  background-color: $gray-lighter;
+
+  @media (prefers-color-scheme: dark) {
+    background-color: $gray-dark;
+  }
 
   .dice-picker__dice_container {
     min-width: 3.5rem;
@@ -93,6 +120,10 @@ body {
       font-size: 1.2rem;
       outline: 2px solid black;
       border-radius: 2rem;
+
+      @media (prefers-color-scheme: dark) {
+        outline: 2px solid $gray-lighter;
+      }
     }
   }
 }
@@ -163,18 +194,48 @@ h1 {
 }
 
 .action-button {
+  font-size: 1rem;
   background-color: #648452;
   color: #fff;
   border: 2px solid darken(#648452, 10);
   margin: 0.5rem;
   padding: 0.5rem;
   min-width: 5rem;
+
+  @media (prefers-color-scheme: dark) {
+    color: $gray-darker;
+    background-color: $gray-light;
+    border: 2px solid $gray;
+  }
+
+  &:hover {
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #000;
+      border: 2px solid $gray-light;
+      color: #fff;
+    }
+  }
 }
 
 .action-button--secondary {
   background-color: #fff;
   border: 2px solid darken(#648452, 10);
   color: darken(#648452, 10);
+
+  @media (prefers-color-scheme: dark) {
+    color: $gray-lighter;
+    background-color: $gray-darker;
+    border: 2px solid $gray;
+  }
+
+  &:hover {
+
+    @media (prefers-color-scheme: dark) {
+      background-color: #000;
+      border: 2px solid $gray-light;
+    }
+  }
 }
 
 /* Text meant only for screen readers. */
