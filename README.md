@@ -10,8 +10,8 @@ See it in action [here](https://bobwise.github.io/dice-roller/).
 
 * Designed for keyboard support ⌨️
 * Designed for screen reader support 🗣
-* dark mode
-* reduced motion
+* System-level Dark Mode support with `prefers-color-scheme: dark`
+* System-level Reduced Motion support with `prefers-reduced-motion: reduce`
 
 ## Run it Yourself 👾
 
