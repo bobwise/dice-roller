@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import './App.scss';
 import DicePicker from './components/DicePicker/DicePicker';
 import Dice from './components/Dice/Dice';
-import Triangle from "./components/Icons/Triangle";
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 function App() {
 
@@ -76,23 +79,36 @@ function App() {
     <div className="App">
       <h1 aria-label="Dice">di.ce</h1>
       <DicePicker addDiceCallback={addNewDice}></DicePicker>
-      <div className="roll-collection">
-        {rolledDice.map((dice) =>
-          <Dice
-            maxValue={dice.maxValue}
-            diceValue={dice.value}
-            onClick={() => { removeDice(dice.id) }}
-            key={dice.id}
-          >
-          </Dice>
-        )}
-      </div>
+      {/* <div className="roll-collection"> */}
+        <TransitionGroup className="roll-collection">
+          {rolledDice.map((dice) =>
+            <CSSTransition
+              key={dice.id}
+              timeout={200}
+              classNames="dice-animation"
+            >
+              <Dice
+                maxValue={dice.maxValue}
+                diceValue={dice.value}
+                onClick={() => { removeDice(dice.id) }}
+                key={dice.id}
+              >
+              </Dice>
+            </CSSTransition>
+          )}
+        </TransitionGroup>
+      {/* </div> */}
       <div className='roll-total'>
         <span id="live-total" aria-live="polite" class="screen-reader-text">{totalMessage}</span>
         <span aria-hidden="true">Total: {total}</span>
       </div>
-      <button class="action-button" onClick={rerollAll}>Roll</button>
-      <button class="action-button action-button--secondary" onClick={clear}>Clear</button>
+      <div className="action-container">
+        <button class="action-button" onClick={rerollAll}>Roll</button>
+        <button class="action-button action-button--secondary" onClick={clear}>Clear</button>
+      </div>
+      <footer className='siteFooter'>
+        <p><span aria-hidden="true">by</span> <a aria-label="Made by Bobwise, with love." href="http://twitter.com/bobwise/">Bobwise</a></p>
+      </footer>
     </div>
   );
 }

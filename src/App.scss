@@ -1,16 +1,26 @@
 $dice-border-darken-factor: 25;
 
-$dice-teal: #65d0d9;
+// Olya colors
+// $dice-teal: #65d0d9;
+// $dice-blue: #21469f;
+// $dice-green: #648452;
+// $dice-yellow: #dcbf5e;
+// $dice-brown: #5a3128;
+// $dice-red: #db7277;
+
+// macos accents
+$dice-teal: #953D96;
+$dice-blue: #027AFE;
+$dice-green: #60B745;
+$dice-yellow: #FCB826;
+$dice-brown: #F74F9E;
+$dice-red: #E0383E;
+
 $dice-teal-dark: darken($dice-teal, $dice-border-darken-factor);
-$dice-blue: #21469f;
 $dice-blue-dark: darken($dice-blue, $dice-border-darken-factor);
-$dice-green: #648452;
 $dice-green-dark: darken($dice-green, $dice-border-darken-factor);
-$dice-yellow: #dcbf5e;
 $dice-yellow-dark: darken($dice-yellow, $dice-border-darken-factor);
-$dice-brown: #5a3128;
 $dice-brown-dark: darken($dice-brown, $dice-border-darken-factor);
-$dice-red: #db7277;
 $dice-red-dark: darken($dice-red, $dice-border-darken-factor);
 
 $gray-lighter: #D2D2D2;
@@ -56,6 +66,7 @@ body {
   background-color: #eee;
   text-align: right;
   padding: 0.5rem;
+  font-size: 1.5rem;
 
   @media (prefers-color-scheme: dark) {
     background-color: $gray;
@@ -156,19 +167,32 @@ $dice-border-width: 2px;
 }
 
 .d4 {
-  color: black;
+  // color: black;
   fill: $dice-teal;
   stroke: $dice-teal-dark;
+
+  svg {
+    stroke-width: $dice-border-width * 3;
+  }
 }
 
 .d6 {
   fill: $dice-blue;
   stroke: $dice-blue-dark;
+
+  svg {
+    stroke-width: $dice-border-width * 3;
+  }
 }
 
 .d8 {
+  color: black;
   fill: $dice-green;
   stroke: $dice-green-dark;
+
+  svg {
+    stroke-width: $dice-border-width * 3;
+  }
 }
 
 .d10 {
@@ -184,8 +208,13 @@ $dice-border-width: 2px;
 }
 
 .d20 {
+  color: black;
   fill: $dice-brown;
   stroke: $dice-brown-dark;
+
+  svg {
+    stroke-width: $dice-border-width * 6;
+  }
 }
 
 h1 {
@@ -193,12 +222,21 @@ h1 {
   margin-bottom: 0.2rem;
 }
 
+.action-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: .2rem;
+
+  .action-button {
+    flex: 1 1 auto;
+  }
+}
+
 .action-button {
   font-size: 1rem;
-  background-color: #648452;
-  color: #fff;
-  border: 2px solid darken(#648452, 10);
-  margin: 0.5rem;
+  background-color: $dice-green;
+  color: #000;
+  border: 2px solid $dice-green-dark;
   padding: 0.5rem;
   min-width: 5rem;
 
@@ -209,6 +247,11 @@ h1 {
   }
 
   &:hover {
+
+    background-color: $dice-green-dark;
+    border-color: $dice-green;
+    color: #fff;
+
 
     @media (prefers-color-scheme: dark) {
       background-color: #000;
@@ -222,6 +265,7 @@ h1 {
   background-color: #fff;
   border: 2px solid darken(#648452, 10);
   color: darken(#648452, 10);
+  margin-left: .2rem; //hack;
 
   @media (prefers-color-scheme: dark) {
     color: $gray-lighter;
@@ -250,4 +294,50 @@ h1 {
   position: absolute;
   width: 1px;
   word-wrap: normal !important;
+}
+
+.dice-animation-enter {
+  opacity: 0;
+  // animation:spin .5s linear infinite;
+}
+.dice-animation-enter-active {
+  opacity: 1;
+  animation:spin .5s linear infinite;
+  transition: all 500ms linear;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    transition: none;
+  }
+}
+.dice-animation-exit {
+  opacity: 1;
+}
+.dice-animation-exit-active {
+  opacity: 0;
+  transition: opacity 500ms linear;
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+.siteFooter {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.siteFooter a {
+  color: #666;
+
+  @media (prefers-color-scheme: dark) {
+    color: $gray-lighter;
+  }
+
+  &:hover,
+  &:focus {
+    border-bottom: 2px solid #666;
+
+    @media (prefers-color-scheme: dark) {
+      border-bottom: 2px solid $gray-light;
+    }
+  }
 }
