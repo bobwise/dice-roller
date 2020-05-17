@@ -21,8 +21,8 @@ function App() {
     // update the total
     const newTotal = total + dice.value;
     setTotal(newTotal);
-    setTotalMessage("Rolled a " + dice.value + ". New total is " + newTotal);
-    setTotalMessage("");
+    setTotalMessage("Rolled a " + dice.value + ". Total is " + newTotal + ".");
+    // setTimeout(setTotalMessage(""), 5000);
   }
 
   function removeDice(id) {
@@ -35,7 +35,6 @@ function App() {
 
     setTotal(newTotal);
     setTotalMessage("Removed a d " + rolledDice[removeIndex].maxValue + ". New total is " + newTotal);
-    setTotalMessage("");
 
     setRolledDice(rolledDice.filter(item => item.id !== id));
 
@@ -79,7 +78,6 @@ function App() {
     <div className="App">
       <h1 aria-label="Dice">di.ce</h1>
       <DicePicker addDiceCallback={addNewDice}></DicePicker>
-      {/* <div className="roll-collection"> */}
         <TransitionGroup className="roll-collection">
           {rolledDice.map((dice) =>
             <CSSTransition
@@ -97,9 +95,8 @@ function App() {
             </CSSTransition>
           )}
         </TransitionGroup>
-      {/* </div> */}
       <div className='roll-total'>
-        <span id="live-total" aria-live="polite" class="screen-reader-text">{totalMessage}</span>
+        <span aria-live="polite" class="screen-reader-text">{totalMessage}</span>
         <span aria-hidden="true">Total: {total}</span>
       </div>
       <div className="action-container">
