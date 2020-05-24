@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/dice-roller/static/css/main.9403a327.chunk.css",
+    "main.css": "/dice-roller/static/css/main.fe870462.chunk.css",
     "main.js": "/dice-roller/static/js/main.74da10ad.chunk.js",
     "main.js.map": "/dice-roller/static/js/main.74da10ad.chunk.js.map",
     "runtime-main.js": "/dice-roller/static/js/runtime-main.3ad158a9.js",
@@ -8,15 +8,15 @@
     "static/js/2.118557c0.chunk.js": "/dice-roller/static/js/2.118557c0.chunk.js",
     "static/js/2.118557c0.chunk.js.map": "/dice-roller/static/js/2.118557c0.chunk.js.map",
     "index.html": "/dice-roller/index.html",
-    "precache-manifest.81678a4e06b0f6d92a71f14dae949ea1.js": "/dice-roller/precache-manifest.81678a4e06b0f6d92a71f14dae949ea1.js",
+    "precache-manifest.452fb6069aebd85d227c06eab0f7e8ae.js": "/dice-roller/precache-manifest.452fb6069aebd85d227c06eab0f7e8ae.js",
     "service-worker.js": "/dice-roller/service-worker.js",
-    "static/css/main.9403a327.chunk.css.map": "/dice-roller/static/css/main.9403a327.chunk.css.map",
+    "static/css/main.fe870462.chunk.css.map": "/dice-roller/static/css/main.fe870462.chunk.css.map",
     "static/js/2.118557c0.chunk.js.LICENSE.txt": "/dice-roller/static/js/2.118557c0.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.3ad158a9.js",
     "static/js/2.118557c0.chunk.js",
-    "static/css/main.9403a327.chunk.css",
+    "static/css/main.fe870462.chunk.css",
     "static/js/main.74da10ad.chunk.js"
   ]
 }
