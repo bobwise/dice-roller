@@ -76,7 +76,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1 aria-label="Dice">di.ce</h1>
       <DicePicker addDiceCallback={addNewDice}></DicePicker>
         <TransitionGroup className="roll-collection">
           {rolledDice.map((dice) =>
@@ -96,15 +95,19 @@ function App() {
           )}
         </TransitionGroup>
       <div className='roll-total'>
-        <span aria-live="polite" class="screen-reader-text">{totalMessage}</span>
+        <span aria-live="polite" className="screen-reader-text">{totalMessage}</span>
         <span aria-hidden="true">Total: {total}</span>
       </div>
       <div className="action-container">
-        <button class="action-button" onClick={rerollAll}>Roll</button>
-        <button class="action-button action-button--secondary" onClick={clear}>Clear</button>
+        <button className="action-button" onClick={rerollAll}>Roll</button>
+        <button className="action-button action-button--secondary" onClick={clear}>Clear</button>
       </div>
       <footer className='siteFooter'>
-        <p><span aria-hidden="true">by</span> <a aria-label="Made by Bobwise, with love." href="http://twitter.com/bobwise/">Bobwise</a></p>
+        <h3>
+          Dice 
+          <p aria-hidden="true"> by </p> 
+          <a aria-label="Made by Bobwise" href="http://twitter.com/bobwise/">Bobwise</a>
+        </h3>
       </footer>
     </div>
   );

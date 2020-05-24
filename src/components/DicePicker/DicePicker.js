@@ -8,7 +8,7 @@ function DicePicker(props) {
     <div className="dice-picker">
       {[4, 6, 8, 10, 12, 20].map((diceSize) => {
         return (
-          <div className="dice-picker__dice_container">
+          <div key={diceSize} className="dice-picker__dice_container">
             <Dice
               maxValue={diceSize}
               diceValue={diceSize}

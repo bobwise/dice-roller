@@ -9,24 +9,24 @@ $dice-border-darken-factor: 25;
 // $dice-red: #db7277;
 
 // macos accents
-$dice-teal: #953D96;
-$dice-blue: #027AFE;
-$dice-green: #60B745;
-$dice-yellow: #FCB826;
-$dice-brown: #F74F9E;
-$dice-red: #E0383E;
+$dice-teal: #953d96;
+$dice-blue: #027afe;
+$dice-green: #60b745;
+$dice-yellow: #fcb826;
+$dice-brown: #f74f9e;
+$dice-red: #e0383e;
 
-$dice-teal-dark: darken($dice-teal, $dice-border-darken-factor);
+$dice-teal-dark: darken($dice-teal, 15);
 $dice-blue-dark: darken($dice-blue, $dice-border-darken-factor);
 $dice-green-dark: darken($dice-green, $dice-border-darken-factor);
 $dice-yellow-dark: darken($dice-yellow, $dice-border-darken-factor);
 $dice-brown-dark: darken($dice-brown, $dice-border-darken-factor);
 $dice-red-dark: darken($dice-red, $dice-border-darken-factor);
 
-$gray-lighter: #D2D2D2;
-$gray-light: #7D7D7D;
-$gray: #3F3F45;
-$gray-dark: #2A2A2B;
+$gray-lighter: #d2d2d2;
+$gray-light: #7d7d7d;
+$gray: #3f3f45;
+$gray-dark: #2a2a2b;
 $gray-darker: #212121;
 
 body {
@@ -57,7 +57,7 @@ body {
   overflow-y: auto;
 
   @media (prefers-color-scheme: dark) {
-    background-color: $gray;
+    background-color: $gray-dark;
     color: $gray-lighter;
   }
 }
@@ -69,7 +69,7 @@ body {
   font-size: 1.5rem;
 
   @media (prefers-color-scheme: dark) {
-    background-color: $gray;
+    background-color: $gray-dark;
     color: $gray-lighter;
   }
 }
@@ -120,16 +120,17 @@ body {
   }
 
   .dice {
-    transition: .2s;
     margin: 5px;
     height: 2.5rem;
     width: 2.5rem;
     font-size: 0.8rem;
-    &:focus {
+
+    &:focus,
+    &:hover {
       height: 2.75rem;
       width: 2.75rem;
       font-size: 1.2rem;
-      outline: 2px solid black;
+      // outline: 2px solid black;
       border-radius: 2rem;
 
       @media (prefers-color-scheme: dark) {
@@ -142,10 +143,24 @@ body {
 $dice-border-width: 2px;
 
 .dice {
+  transition: 0.2s;
   background-color: transparent;
   padding: 5px;
   text-align: center;
   position: relative;
+  // width: 95%;
+
+  &:focus,
+  &:hover {
+    transform: translateY(-4px);
+    font-size: 2rem;
+    // outline: 2px solid black;
+    border-radius: 2rem;
+
+    @media (prefers-color-scheme: dark) {
+      outline: 2px solid $gray-lighter;
+    }
+  }
 
   .dice-label,
   svg {
@@ -159,20 +174,22 @@ $dice-border-width: 2px;
   }
 }
 
-.d4 .dice-label {
-  margin-top: 0.25rem;
-}
-.d10 .dice-label {
-  margin-top: 0.1rem;
-}
-
 .d4 {
   // color: black;
   fill: $dice-teal;
   stroke: $dice-teal-dark;
 
+  &:active {
+    fill: $dice-teal-dark;
+    stroke: $dice-teal;
+  }
+
   svg {
     stroke-width: $dice-border-width * 3;
+  }
+
+  .dice-label {
+    margin-top: 0.25rem;
   }
 }
 
@@ -180,15 +197,26 @@ $dice-border-width: 2px;
   fill: $dice-blue;
   stroke: $dice-blue-dark;
 
+  &:active {
+    fill: $dice-blue-dark;
+    stroke: $dice-blue;
+  }
+
   svg {
     stroke-width: $dice-border-width * 3;
   }
 }
 
 .d8 {
-  color: black;
+  color: #000;
   fill: $dice-green;
   stroke: $dice-green-dark;
+
+  &:active {
+    fill: $dice-green-dark;
+    stroke: $dice-green;
+    color: #fff;
+  }
 
   svg {
     stroke-width: $dice-border-width * 3;
@@ -196,21 +224,42 @@ $dice-border-width: 2px;
 }
 
 .d10 {
-  color: black;
+  color: #000;
   fill: $dice-yellow;
   stroke: $dice-yellow-dark;
+
+  &:active {
+    fill: $dice-yellow-dark;
+    stroke: $dice-yellow;
+    color: #fff;
+  }
+
+  .dice-label {
+    margin-top: 0.1rem;
+  }
 }
 
 .d12 {
   // color: black;
   fill: $dice-red;
   stroke: $dice-red-dark;
+
+  &:active {
+    fill: $dice-red-dark;
+    stroke: $dice-red;
+  }
 }
 
 .d20 {
-  color: black;
+  color: #000;
   fill: $dice-brown;
   stroke: $dice-brown-dark;
+
+  &:active {
+    fill: $dice-brown-dark;
+    stroke: $dice-brown;
+    color: #fff;
+  }
 
   svg {
     stroke-width: $dice-border-width * 6;
@@ -225,7 +274,7 @@ h1 {
 .action-container {
   display: flex;
   flex-wrap: wrap;
-  margin-top: .2rem;
+  margin-top: 0.2rem;
 
   .action-button {
     flex: 1 1 auto;
@@ -241,34 +290,43 @@ h1 {
   min-width: 5rem;
 
   @media (prefers-color-scheme: dark) {
-    color: $gray-darker;
-    background-color: $gray-light;
-    border: 2px solid $gray;
+    color: #fff;
+    background-color: $gray;
+    border: 2px solid $gray-dark;
   }
 
-  &:hover {
-
-    background-color: $dice-blue-dark;
+  &:hover,
+  &:focus {
+    background-color: darken($dice-blue, 15);
     border-color: $dice-blue;
     color: #fff;
-
+    outline: 2px solid black;
 
     @media (prefers-color-scheme: dark) {
-      background-color: #000;
+      background-color: $gray-dark;
       border: 2px solid $gray-light;
       color: #fff;
+      outline: 2px solid white;
+    }
+
+    &:active {
+      background-color: $dice-blue-dark;
+
+      @media (prefers-color-scheme: dark) {
+        background-color: #000;
+      }
     }
   }
 }
 
-.action-button--secondary {
+.action-button.action-button--secondary {
   background-color: #fff;
   border: 2px solid darken(#648452, 10);
   color: darken(#648452, 10);
-  margin-left: .2rem; //hack;
+  margin-left: 0.2rem; //hack;
 
-  @media (max-width: 157px){
-    margin-top: .2rem;
+  @media (max-width: 157px) {
+    margin-top: 0.2rem;
     margin-left: 0;
   }
 
@@ -278,15 +336,26 @@ h1 {
     border: 2px solid $gray;
   }
 
-  &:hover {
-
+  &:hover,
+  &:focus {
     background-color: $dice-green;
     border-color: $dice-green-dark;
     color: #fff;
 
     @media (prefers-color-scheme: dark) {
+      color: #fff;
+      background-color: $gray-darker;
+      border: 2px solid $gray-lighter;
+    }
+  }
+
+  &:active {
+    background-color: $dice-green-dark;
+    border-color: $dice-green;
+    color: #fff;
+
+    @media (prefers-color-scheme: dark) {
       background-color: #000;
-      border: 2px solid $gray-light;
     }
   }
 }
@@ -311,7 +380,7 @@ h1 {
 }
 .dice-animation-enter-active {
   opacity: 1;
-  animation:spin .5s linear infinite;
+  animation: spin 0.5s linear infinite;
   transition: all 500ms linear;
 
   @media (prefers-reduced-motion: reduce) {
@@ -327,26 +396,46 @@ h1 {
   transition: opacity 500ms linear;
 }
 
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 
 .siteFooter {
   margin-top: 10px;
   text-align: right;
-}
+  font-size: 1.2rem;
 
-.siteFooter a {
-  color: #666;
-
-  @media (prefers-color-scheme: dark) {
-    color: $gray-lighter;
+  h3 {
+    margin: 0;
   }
 
-  &:hover,
-  &:focus {
-    border-bottom: 2px solid #666;
+  p {
+    font-weight: normal;
+    font-size: 1rem;
+    display: inline;
+    font-size: 0.9rem;
+  }
+
+  a {
+    color: #666;
+    font-size: 1rem;
+    font-weight: normal;
+    font-size: 0.9rem;
 
     @media (prefers-color-scheme: dark) {
-      border-bottom: 2px solid $gray-light;
+      color: $gray-lighter;
+    }
+
+    &:hover,
+    &:focus {
+      border-bottom: 2px solid #666;
+
+      @media (prefers-color-scheme: dark) {
+        border-bottom: 2px solid $gray-light;
+      }
     }
   }
 }

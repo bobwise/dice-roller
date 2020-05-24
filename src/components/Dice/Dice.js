@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Dice.css';
 import Triangle from "../Icons/Triangle";
 import Hexagon from "../Icons/Hexagon";
@@ -13,6 +13,7 @@ function Dice(props) {
   return (
       <button
         aria-label={props.ariaLabel ? props.ariaLabel : props.diceValue + " rolled on a d" + props.maxValue + ". Click to remove."}
+        type="button"
         className={classNames({
           'dice': true,
           'd4': props.maxValue === 4,
@@ -31,7 +32,7 @@ function Dice(props) {
         {props.maxValue === 12 && <Nonagon />}
         {props.maxValue === 20 && <Hexagon />}
         {props.children}
-        <span class='dice-label'>
+        <span className='dice-label'>
           {props.diceValue}
         </span>
       </button>
